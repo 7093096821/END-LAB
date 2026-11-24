@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>E-Commerce Website</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+header {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+nav {
+    background: #34495e;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+}
+nav ul li {
+    padding: 15px 20px;
+    /* Added transition for smooth link background fade */
+    transition: background 0.3s ease;
+}
+/* Animation: Highlight nav links on hover */
+nav ul li:hover {
+    background: #4e6a85;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+main {
+    display: flex;
+    padding: 20px;
+}
+section {
+    width: 75%;
+}
+article {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #f9f9f9;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* Added transition for card interaction */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* Animation: Lift card and add a soft shadow on hover */
+article:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+article img {
+    width: 150px;
+    height: 120px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    background: white;
+    /* Added transition for image zoom */
+    transition: transform 0.3s ease;
+}
+/* Animation: Subtle zoom on the product image when hovering over the card */
+article:hover img {
+    transform: scale(1.05);
+}
+.product-info {
+    flex: 1;
+}
+aside {
+    width: 25%;
+    margin-left: 20px;
+    background: #f1f1f1;
+    padding: 15px;
+    border-left: 4px solid green;
+    /* Added transition for sidebar shift */
+    transition: transform 0.3s ease;
+}
+/* Animation: Subtle shift for sidebar on hover */
+aside:hover {
+    transform: translateX(4px);
+}
+aside ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+aside li {
+    margin-bottom: 10px;
+}
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+button {
+    background: green;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    /* Added transition for button color and size */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+/* Animation: Darken background and scale slightly on hover */
+button:hover {
+    background: darkgreen;
+    transform: scale(1.05);
+}
+/* Animation: Provide visual feedback when button is clicked */
+button:active {
+    transform: scale(0.98);
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>Durga Online Store</h1>
+    <p>Best Shopping Website</p>
+</header>
+<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Mobiles</a></li>
+        <li><a href="#">Laptops</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+<main>
+    <section>
+        <!-- Smartphone -->
+        <article>
+            <img src="smart.pjg.webp" alt="Smart Phone">
+            <div class="product-info">
+                <h2>Smart Phone</h2>
+                <p>Price : ₹20,000</p>
+                <button>Add to Cart</button>
+            </div>
+        </article>
+        <!-- Laptop -->
+        <article>
+            <img src="laptop.pjg.avif" alt="Laptop">
+            <div class="product-info">
+                <h2>Laptop</h2>
+                <p>Price : ₹55,000</p>
+                <button>Add to Cart</button>
+            </div>
+        </article>
+        <!-- Headphones -->
+        <article>
+            <img src="head.pjg.jpg" alt="Headphones">
+            <div class="product-info">
+                <h2>Headphones</h2>
+                <p>Price : ₹2,000</p>
+                <button>Add to Cart</button>
+            </div>
+        </article>
+    </section>
+    <aside>
+        <h3>Offers</h3>
+        <ul>
+            <li>10% Off on Mobiles</li>
+            <li>Free Delivery</li>
+            <li>Cash on Delivery</li>
+        </ul>
+    </aside>
+</main>
+<footer>
+    <p>&copy; 2026 Durga Online Store | All Rights Reserved</p>
+</footer>
+</body>
+</html>

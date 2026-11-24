@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup & Login</title>
+</head>
+<body>
+
+<h2>Sign Up</h2>
+<input id="suUser" placeholder="Username">
+<input id="suPass" type="password" placeholder="Password">
+<button onclick="signup()">Sign Up</button>
+
+<h2>Login</h2>
+<input id="liUser" placeholder="Username">
+<input id="liPass" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<p id="msg"></p>
+
+<script>
+function signup() {
+    localStorage.setItem("user", suUser.value);
+    localStorage.setItem("pass", suPass.value);
+    msg.innerText = "Signup successful!";
+}
+
+function login() {
+    if (liUser.value === localStorage.getItem("user") &&
+        liPass.value === localStorage.getItem("pass"))
+        msg.innerText = "Login successful!";
+    else
+        msg.innerText = "Invalid username or password!";
+}
+</script>
+
+</body>
+</html>

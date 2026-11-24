@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce Website</title>
+    <style>
+        body {
+            background-color: #f4f7f6;
+            color: #333333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            background-color: #ecf0f1;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        section, .image-gallery {
+            background-color: #ffffff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+        }
+        th {
+            background-color: #34495e;
+            color: white;
+        }
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        figure {
+            margin: 0;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+            width: 160px;
+        }
+        figure img {
+            max-width: 100%;
+            height: 120px;
+            object-fit: contain;
+        }
+        figcaption {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #555;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Online Shopping Store</h1>
+        <p>Best Deals on Electronics and Accessories</p>
+    </header>
+    <nav>
+        <a href="#">Home</a> | <a href="#">Products</a> | <a href="#">Offers</a> | <a href="#">Contact</a>
+    </nav>
+    <main>
+        <section>
+            <h2>Featured Products</h2>
+            <table border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <th>S.No</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price (₹)</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Laptop</td>
+                    <td>Electronics</td>
+                    <td>55,000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Smartphone</td>
+                    <td>Electronics</td>
+                    <td>25,000</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Headphones</td>
+                    <td>Accessories</td>
+                    <td>2,000</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Smart Watch</td>
+                    <td>Wearables</td>
+                    <td>5,500</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Backpack</td>
+                    <td>Bags</td>
+                    <td>1,200</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="image-gallery">
+            <h2>Product Catalog Gallery</h2>
+            <div class="gallery-container">
+                <figure>
+                    <img src="laptop.pjg" alt="Laptop">
+                    <figcaption>Premium Laptop</figcaption>
+                </figure>
+                <figure>
+                    <img src="phone.pjg.jpg" alt="Smartphone">
+                    <figcaption>Smartphone</figcaption>
+                </figure>
+                <figure>
+                    <img src="headphones.pjg.jpg" alt="Headphones">
+                    <figcaption>Wireless Headphones</figcaption>
+                </figure>
+                <figure>
+                    <img src="smartwatch.pjg" alt="Smart Watch">
+                    <figcaption>Smart Watch</figcaption>
+                </figure>
+                <figure>
+                    <img src="backpack.pjg" alt="Backpack">
+                    <figcaption>Travel Backpack</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Online Shopping Store. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Result Management System</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    padding: 30px;
+    background: linear-gradient(135deg, #4facfe, #6a5acd);
+}
+
+/* Main Container */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    animation: appear 0.8s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #4338ca;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Search */
+.search-title {
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    padding: 14px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 10px rgba(99,102,241,0.3);
+}
+
+button {
+    padding: 14px 22px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #6366f1, #4338ca);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(67,56,202,0.3);
+}
+
+/* Student Details */
+.student-info {
+    margin-top: 20px;
+    padding: 22px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+    border-left: 6px solid #4f46e5;
+    animation: fade 0.7s ease;
+}
+
+.student-info h2 {
+    color: #3730a3;
+    margin-bottom: 15px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.info-box {
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.info-box small {
+    color: #777;
+}
+
+.info-box strong {
+    display: block;
+    margin-top: 5px;
+    color: #333;
+}
+
+/* Table Section */
+.result-section {
+    margin-top: 25px;
+}
+
+.result-section h2 {
+    margin-bottom: 15px;
+    color: #3730a3;
+}
+
+/* Attractive Table */
+.table-container {
+    overflow-x: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    overflow: hidden;
+}
+
+thead {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+}
+
+th {
+    padding: 16px;
+    font-size: 15px;
+}
+
+td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+tbody tr {
+    transition: 0.3s;
+}
+
+tbody tr:hover {
+    background: #eef2ff;
+    transform: scale(1.01);
+}
+
+/* Subject Badge */
+.subject {
+    font-weight: bold;
+    color: #4338ca;
+}
+
+/* Marks */
+.marks {
+    font-weight: bold;
+    color: #111827;
+}
+
+/* Grade Badge */
+.grade {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #e0e7ff;
+    color: #3730a3;
+    font-weight: bold;
+}
+
+/* Status */
+.pass {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #dcfce7;
+    color: #15803d;
+    font-weight: bold;
+}
+
+.fail {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #fee2e2;
+    color: #dc2626;
+    font-weight: bold;
+}
+
+/* Summary Cards */
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.summary-card {
+    padding: 22px;
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+    background: linear-gradient(135deg, #6366f1, #4338ca);
+    box-shadow: 0 8px 20px rgba(67,56,202,0.25);
+    transition: 0.3s;
+}
+
+.summary-card:hover {
+    transform: translateY(-7px);
+}
+
+.summary-card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.summary-card p {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Result */
+#finalResult.pass-result {
+    color: #bbf7d0;
+}
+
+#finalResult.fail-result {
+    color: #fecaca;
+}
+
+/* Error */
+#error {
+    color: #dc2626;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Hide result initially */
+#resultSection {
+    display: none;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎓 Student Result Management System</h1>
+
+    <p class="subtitle">
+        View and Manage Student Academic Results
+    </p>
+
+    <!-- Search -->
+    <h2 class="search-title">🔍 Search Student Result</h2>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="rollInput"
+            placeholder="Enter Roll Number">
+
+        <button onclick="searchStudent()">Search</button>
+
+        <button onclick="resetResult()">Reset</button>
+    </div>
+
+    <p id="error"></p>
+
+
+    <!-- Result Section -->
+    <div id="resultSection">
+
+        <!-- Student Details -->
+        <div class="student-info">
+
+            <h2>👨‍🎓 Student Details</h2>
+
+            <div class="info-grid">
+
+                <div class="info-box">
+                    <small>Name</small>
+                    <strong id="name"></strong>
+                </div>
+
+                <div class="info-box">
+                    <small>Roll Number</small>
+                    <strong id="roll"></strong>
+                </div>
+
+                <div class="info-box">
+                    <small>Department</small>
+                    <strong id="department"></strong>
+                </div>
+
+                <div class="info-box">
+                    <small>Year</small>
+                    <strong id="year"></strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Academic Results -->
+        <div class="result-section">
+
+            <h2>📊 Academic Results</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Max Marks</th>
+                            <th>Marks Obtained</th>
+                            <th>Grade</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="resultTable"></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- Summary -->
+        <div class="summary">
+
+            <div class="summary-card">
+                <h3>Total Marks</h3>
+                <p id="total">0</p>
+            </div>
+
+            <div class="summary-card">
+                <h3>Percentage</h3>
+                <p id="percentage">0%</p>
+            </div>
+
+            <div class="summary-card">
+                <h3>Final Result</h3>
+                <p id="finalResult">-</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* Student Database */
+
+const students = {
+
+    "101": {
+        name: "K. Durga",
+        roll: "101",
+        department: "CSE",
+        year: "3rd Year",
+
+        subjects: {
+            FEDF: 85,
+            JAVA: 78,
+            OS: 82,
+            MATH: 91,
+            AIML: 88
+        }
+    },
+
+    "102": {
+        name: "Rahul",
+        roll: "102",
+        department: "CSE",
+        year: "3rd Year",
+
+        subjects: {
+            FEDF: 72,
+            JAVA: 68,
+            OS: 75,
+            MATH: 80,
+            AIML: 77
+        }
+    }
+
+};
+
+
+/* Search Student */
+
+function searchStudent() {
+
+    const roll =
+        document.getElementById("rollInput").value.trim();
+
+    const student = students[roll];
+
+    if (!student) {
+
+        document.getElementById("error").textContent =
+            "❌ Student not found!";
+
+        document.getElementById("resultSection").style.display =
+            "none";
+
+        return;
+    }
+
+    document.getElementById("error").textContent = "";
+
+
+    /* Student Details */
+
+    document.getElementById("name").textContent =
+        student.name;
+
+    document.getElementById("roll").textContent =
+        student.roll;
+
+    document.getElementById("department").textContent =
+        student.department;
+
+    document.getElementById("year").textContent =
+        student.year;
+
+
+    /* Create Table */
+
+    let table = "";
+    let total = 0;
+    let failed = false;
+
+    for (const subject in student.subjects) {
+
+        const marks = student.subjects[subject];
+
+        total += marks;
+
+        const grade = getGrade(marks);
+
+        const status =
+            marks >= 40 ? "PASS" : "FAIL";
+
+        if (marks < 40) {
+            failed = true;
+        }
+
+        table += `
+        <tr>
+
+            <td class="subject">
+                ${subject}
+            </td>
+
+            <td>100</td>
+
+            <td class="marks">
+                ${marks}
+            </td>
+
+            <td>
+                <span class="grade">
+                    ${grade}
+                </span>
+            </td>
+
+            <td>
+                <span class="${status === "PASS" ? "pass" : "fail"}">
+                    ${status}
+                </span>
+            </td>
+
+        </tr>
+        `;
+    }
+
+    document.getElementById("resultTable").innerHTML =
+        table;
+
+
+    /* Total */
+
+    document.getElementById("total").textContent =
+        total;
+
+
+    /* Percentage */
+
+    const percentage =
+        (total / 500) * 100;
+
+    document.getElementById("percentage").textContent =
+        percentage.toFixed(2) + "%";
+
+
+    /* Final Result */
+
+    const finalResult =
+        document.getElementById("finalResult");
+
+    if (failed) {
+
+        finalResult.textContent = "FAIL";
+
+        finalResult.className = "fail-result";
+
+    } else {
+
+        finalResult.textContent = "PASS";
+
+        finalResult.className = "pass-result";
+    }
+
+
+    /* Show Result */
+
+    document.getElementById("resultSection").style.display =
+        "block";
+}
+
+
+/* Grade Function */
+
+function getGrade(mark) {
+
+    if (mark >= 90) return "A+";
+    if (mark >= 80) return "A";
+    if (mark >= 70) return "B";
+    if (mark >= 60) return "C";
+    if (mark >= 50) return "D";
+    if (mark >= 40) return "E";
+
+    return "F";
+}
+
+
+/* Reset Function */
+
+function resetResult() {
+
+    document.getElementById("rollInput").value = "";
+
+    document.getElementById("error").textContent = "";
+
+    document.getElementById("resultSection").style.display =
+        "none";
+}
+
+
+/* Enter Key Search */
+
+document.getElementById("rollInput")
+.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        searchStudent();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

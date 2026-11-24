@@ -1,0 +1,154 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce Website</title>
+
+    <style>
+        body {
+            background-color: lightblue;
+        }
+
+        header {
+            background-color: white;
+            padding: 15px;
+        }
+
+        nav {
+            background-color: lightgray;
+            padding: 10px;
+        }
+
+        main {
+            background-color: white;
+            padding: 20px;
+        }
+
+        article {
+            background-color: lightyellow;
+            padding: 10px;
+        }
+
+        aside {
+            background-color: lightgreen;
+            padding: 10px;
+        }
+
+        footer {
+            background-color: gray;
+            color: white;
+            padding: 10px;
+        }
+
+        table img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Online Shopping Store</h1>
+        <p>Best Deals on Electronics and Accessories</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a> |
+        <a href="#">Products</a> |
+        <a href="#">Offers</a> |
+        <a href="#">Contact</a>
+    </nav>
+
+    <main>
+
+        <section>
+            <h2>Featured Products</h2>
+
+            <table border="1" cellpadding="10" cellspacing="0">
+
+                <tr>
+                    <th>S.No</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price (₹)</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Laptop</td>
+                    <td>Electronics</td>
+                    <td>
+                        <img src="laptop.pjg" alt="Laptop">
+                        ₹55,000
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Smartphone</td>
+                    <td>Electronics</td>
+                    <td>
+                        <img src="smart.pjg" alt="Smartphone">
+                        ₹25,000
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Headphones</td>
+                    <td>Accessories</td>
+                    <td>
+                        <img src="head.pjg" alt="Headphones">
+                        ₹2,000
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Smart Watch</td>
+                    <td>Wearables</td>
+                    <td>
+                        <img src="smartwatch.pjg" alt="Smart Watch">
+                        ₹5,500
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>5</td>
+                    <td>Backpack</td>
+                    <td>Bags</td>
+                    <td>
+                        ₹1,200
+                    </td>
+                </tr>
+
+            </table>
+        </section>
+
+        <article>
+            <h2>Today's Offer</h2>
+            <p>
+                Get up to <b>30% OFF</b> on all electronic products.
+                Offer valid for a limited period.
+            </p>
+        </article>
+
+        <aside>
+            <h3>Special Notice</h3>
+            <p>Free delivery on orders above ₹999.</p>
+        </aside>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Online Shopping Store. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
+```

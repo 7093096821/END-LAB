@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth System - LocalStorage</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* GRAY BACKGROUND */
+        body {
+            background: linear-gradient(135deg, #555555, #888888, #444444);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            animation: slideIn 0.6s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #555;
+            box-shadow: 0 0 5px rgba(85, 85, 85, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 11px;
+            background: #555555;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #333333;
+            transform: translateY(-2px);
+        }
+
+        .switch-form {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .switch-form a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .switch-form a:hover {
+            text-decoration: underline;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+
+        .success {
+            color: #28a745;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .welcome {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #444;
+        }
+
+        .logout {
+            background: #777777;
+        }
+
+        .logout:hover {
+            background: #444444;
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIGNUP FORM -->
+    <div id="signupBox" class="container">
+
+        <h2>✨ Create Account</h2>
+
+        <form id="signupForm">
+
+            <div class="form-group">
+                <label for="signupUser">Username</label>
+                <input
+                    type="text"
+                    id="signupUser"
+                    required
+                    autocomplete="username"
+                    placeholder="Enter username">
+            </div>
+
+            <div class="form-group">
+                <label for="signupPass">Password</label>
+                <input
+                    type="password"
+                    id="signupPass"
+                    required
+                    autocomplete="new-password"
+                    placeholder="Enter password">
+            </div>
+
+            <button type="submit">Sign Up</button>
+
+        </form>
+
+        <p class="switch-form">
+            Already have an account?
+            <a href="#" id="toLogin">Log In</a>
+        </p>
+
+        <div id="signupMsg" class="message"></div>
+
+    </div>
+
+
+    <!-- LOGIN FORM -->
+    <div id="loginBox" class="container hidden">
+
+        <h2>🔐 Welcome Back</h2>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+                <label for="loginUser">Username</label>
+                <input
+                    type="text"
+                    id="loginUser"
+                    required
+                    autocomplete="username"
+                    placeholder="Enter username">
+            </div>
+
+            <div class="form-group">
+                <label for="loginPass">Password</label>
+                <input
+                    type="password"
+                    id="loginPass"
+                    required
+                    autocomplete="current-password"
+                    placeholder="Enter password">
+            </div>
+
+            <button type="submit">Log In</button>
+
+        </form>
+
+        <p class="switch-form">
+            Don't have an account?
+            <a href="#" id="toSignup">Sign Up</a>
+        </p>
+
+        <div id="loginMsg" class="message"></div>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+    <div id="dashboardBox" class="container hidden">
+
+        <h2>🎉 Dashboard</h2>
+
+        <p class="welcome">
+            Hello,
+            <span
+                id="welcomeUser"
+                style="font-weight: bold; color: #444;">
+            </span>!
+        </p>
+
+        <button id="logoutBtn" class="logout">
+            Log Out
+        </button>
+
+    </div>
+
+
+    <script>
+
+        // DOM Elements
+        const signupBox = document.getElementById('signupBox');
+        const loginBox = document.getElementById('loginBox');
+        const dashboardBox = document.getElementById('dashboardBox');
+
+        const signupForm = document.getElementById('signupForm');
+        const loginForm = document.getElementById('loginForm');
+
+        const signupMsg = document.getElementById('signupMsg');
+        const loginMsg = document.getElementById('loginMsg');
+
+        const welcomeUser = document.getElementById('welcomeUser');
+
+
+        // Switch to Login
+        document.getElementById('toLogin')
+            .addEventListener('click', (e) => {
+
+                e.preventDefault();
+                showBox('login');
+
+            });
+
+
+        // Switch to Signup
+        document.getElementById('toSignup')
+            .addEventListener('click', (e) => {
+
+                e.preventDefault();
+                showBox('signup');
+
+            });
+
+
+        // Logout
+        document.getElementById('logoutBtn')
+            .addEventListener('click', logout);
+
+
+        // Switch screens
+        function showBox(view) {
+
+            signupBox.classList.add('hidden');
+            loginBox.classList.add('hidden');
+            dashboardBox.classList.add('hidden');
+
+            signupMsg.textContent = '';
+            loginMsg.textContent = '';
+
+            if (view === 'signup') {
+                signupBox.classList.remove('hidden');
+            }
+
+            if (view === 'login') {
+                loginBox.classList.remove('hidden');
+            }
+
+            if (view === 'dashboard') {
+                dashboardBox.classList.remove('hidden');
+            }
+        }
+
+
+        // SIGN UP
+        signupForm.addEventListener('submit', (e) => {
+
+            e.preventDefault();
+
+            const username =
+                document.getElementById('signupUser').value.trim();
+
+            const password =
+                document.getElementById('signupPass').value;
+
+            let users =
+                JSON.parse(localStorage.getItem('auth_users')) || {};
+
+
+            // Check username
+            if (users[username]) {
+
+                signupMsg.className = "message error";
+                signupMsg.textContent =
+                    "Username is already taken!";
+
+                return;
+            }
+
+
+            // Save user
+            users[username] = {
+                password: password
+            };
+
+            localStorage.setItem(
+                'auth_users',
+                JSON.stringify(users)
+            );
+
+
+            signupMsg.className = "message success";
+            signupMsg.textContent =
+                "Registration successful! Redirecting to login...";
+
+            signupForm.reset();
+
+
+            setTimeout(() => {
+                showBox('login');
+            }, 1500);
+
+        });
+
+
+        // LOGIN
+        loginForm.addEventListener('submit', (e) => {
+
+            e.preventDefault();
+
+            const username =
+                document.getElementById('loginUser').value.trim();
+
+            const password =
+                document.getElementById('loginPass').value;
+
+
+            let users =
+                JSON.parse(localStorage.getItem('auth_users')) || {};
+
+
+            // Check credentials
+            if (
+                users[username] &&
+                users[username].password === password
+            ) {
+
+                localStorage.setItem(
+                    'auth_currentUser',
+                    username
+                );
+
+                loginForm.reset();
+
+                enterDashboard(username);
+
+            } else {
+
+                loginMsg.className = "message error";
+
+                loginMsg.textContent =
+                    "Invalid username or password.";
+
+            }
+
+        });
+
+
+        // Dashboard
+        function enterDashboard(username) {
+
+            welcomeUser.textContent = username;
+
+            showBox('dashboard');
+
+        }
+
+
+        // Logout
+        function logout() {
+
+            localStorage.removeItem(
+                'auth_currentUser'
+            );
+
+            showBox('login');
+
+        }
+
+
+        // Check existing session
+        window.addEventListener('DOMContentLoaded', () => {
+
+            const loggedInUser =
+                localStorage.getItem('auth_currentUser');
+
+            if (loggedInUser) {
+
+                enterDashboard(loggedInUser);
+
+            } else {
+
+                showBox('login');
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

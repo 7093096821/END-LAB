@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Durga Learning Hub | Student Learning Platform</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #172554;
+            background: #eef5ff;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* TOP HEADER */
+        .top-header {
+            min-height: 85px;
+            background: linear-gradient(90deg, #071f4d, #0b438f, #1261b5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 4%;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            background: #ffd43b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-text h2 {
+            font-size: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            font-size: 11px;
+            color: #cfe5ff;
+        }
+
+        /* SEARCH */
+        .search-box {
+            display: flex;
+            width: 430px;
+            height: 42px;
+        }
+
+        .search-box input {
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 0 16px;
+            font-size: 15px;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .search-box button {
+            width: 90px;
+            border: none;
+            background: #ffd43b;
+            color: #172554;
+            font-weight: bold;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background: #ffca00;
+        }
+
+        /* ACCOUNT LINKS */
+        .account-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .account-links a {
+            color: white;
+        }
+
+        .account-links a:hover {
+            color: #ffd43b;
+        }
+
+        /* NAVIGATION */
+        .category-nav {
+            min-height: 58px;
+            background: #0d6dcc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .category-nav a {
+            color: white;
+            padding: 20px 24px;
+            font-size: 14px;
+            font-weight: bold;
+            border-right: 1px solid rgba(255,255,255,0.15);
+            transition: 0.3s;
+        }
+
+        .category-nav a:first-child {
+            background: #0759aa;
+        }
+
+        .category-nav a:hover {
+            background: #084f98;
+            color: #ffd43b;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 520px;
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 100%;
+            align-items: center;
+            padding: 60px 7%;
+            background:
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.25), transparent 25%),
+                radial-gradient(circle at 20% 90%, rgba(255,255,255,0.15), transparent 25%),
+                linear-gradient(120deg, #06285f, #0b579f, #1687c8);
+            color: white;
+        }
+
+        .hero::before {
+            content: "📚  ✏️  🎓  📖  💻  🧠  📐";
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 42px;
+            opacity: 0.12;
+            letter-spacing: 25px;
+            transform: rotate(-5deg);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "A B C   1 2 3   ∑   ∫   HTML   CSS   JS";
+            position: absolute;
+            bottom: 25px;
+            left: 8%;
+            font-size: 30px;
+            font-weight: bold;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: #ffd43b;
+            color: #172554;
+            padding: 9px 17px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #ffd43b;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 28px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #e1efff;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 14px 24px;
+            border-radius: 8px;
+            background: #ffd43b;
+            color: #172554;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero-btn.secondary {
+            background: white;
+            color: #0b438f;
+        }
+
+        /* STATS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin: -25px 7% 0;
+            position: relative;
+            z-index: 5;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 25px 10px;
+            border-right: 1px solid #e5eaf1;
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat h2 {
+            color: #0b63b6;
+            font-size: 28px;
+        }
+
+        .stat p {
+            color: #6b7280;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        /* COURSES */
+        .section {
+            padding: 75px 5% 60px;
+            background: linear-gradient(180deg, #f4f9ff, #ffffff);
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading span {
+            color: #0878d1;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .section-heading h2 {
+            font-size: 34px;
+            color: #12345b;
+            margin: 8px 0;
+        }
+
+        .section-heading p {
+            color: #64748b;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 22px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #e0eaf5;
+            box-shadow: 0 7px 22px rgba(30,70,110,0.08);
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(30,70,110,0.15);
+        }
+
+        .course-image {
+            height: 175px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            position: relative;
+        }
+
+        .course-image::after {
+            content: "LEARN";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: white;
+            color: #0b63b6;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: bold;
+        }
+
+        .python-bg {
+            background: linear-gradient(135deg, #ffe082, #4f9bd9);
+        }
+
+        .web-bg {
+            background: linear-gradient(135deg, #ff9a76, #ffcf70);
+        }
+
+        .ai-bg {
+            background: linear-gradient(135deg, #a78bfa, #5b5bd6);
+        }
+
+        .data-bg {
+            background: linear-gradient(135deg, #70d6c4, #168f9c);
+        }
+
+        .course-info {
+            padding: 20px;
+        }
+
+        .course-info .category {
+            color: #0878d1;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .course-info h3 {
+            margin: 8px 0;
+            font-size: 20px;
+            color: #17365d;
+        }
+
+        .course-info p {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 42px;
+        }
+
+        .course-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 18px;
+        }
+
+        .rating {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+
+        .learn-btn {
+            background: #0d6dcc;
+            color: white;
+            padding: 9px 13px;
+            border-radius: 7px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .learn-btn:hover {
+            background: #084f98;
+        }
+
+        /* WHY DURGA LEARNING HUB */
+        .features-section {
+            padding: 70px 6%;
+            position: relative;
+            background: linear-gradient(135deg, #dfefff, #f7fbff);
+            overflow: hidden;
+        }
+
+        .features-section::before {
+            content: "📚  🎓  💡  ✏️  🧠";
+            position: absolute;
+            right: -30px;
+            top: 20px;
+            font-size: 65px;
+            opacity: 0.08;
+            transform: rotate(-8deg);
+        }
+
+        .features-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .features-title h2 {
+            font-size: 32px;
+            color: #12345b;
+        }
+
+        .features-title p {
+            color: #64748b;
+            margin-top: 8px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature {
+            background: rgba(255,255,255,0.9);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            border: 1px solid #d8e7f5;
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(30,70,110,0.12);
+        }
+
+        .feature-icon {
+            width: 65px;
+            height: 65px;
+            margin: auto auto 15px;
+            border-radius: 18px;
+            background: #e1efff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .feature h3 {
+            margin-bottom: 9px;
+            color: #17365d;
+        }
+
+        .feature p {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 70px 20px;
+            text-align: center;
+            background: linear-gradient(120deg, #06285f, #0b579f, #1389cc);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: "🎓";
+            position: absolute;
+            font-size: 180px;
+            opacity: 0.06;
+            left: 5%;
+            top: -45px;
+        }
+
+        .cta::after {
+            content: "📚";
+            position: absolute;
+            font-size: 180px;
+            opacity: 0.06;
+            right: 5%;
+            bottom: -60px;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta p {
+            color: #dbeafe;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta a {
+            display: inline-block;
+            background: #ffd43b;
+            color: #172554;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #041a3d;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        footer > p {
+            color: #a9c2df;
+            font-size: 13px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #dbeafe;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #ffd43b;
+        }
+
+        .copyright {
+            margin-top: 15px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1100px) {
+            .search-box {
+                width: 300px;
+            }
+
+            .category-nav a {
+                padding: 18px 12px;
+                font-size: 12px;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+
+        @media (max-width: 850px) {
+            .top-header {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .stat {
+                border-bottom: 1px solid #e5eaf1;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .top-header {
+                position: relative;
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .account-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .category-nav {
+                flex-wrap: wrap;
+                height: auto;
+            }
+
+            .category-nav a {
+                padding: 14px 10px;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .course-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                margin-left: 3%;
+                margin-right: 3%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="top-header">
+
+    <div class="logo-box">
+        <div class="logo-icon">🎓</div>
+
+        <div class="logo-text">
+            <h2>Durga Learning Hub</h2>
+            <span>Learn • Grow • Achieve</span>
+        </div>
+    </div>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search Courses, Quizzes, Topics..."
+        >
+
+        <button onclick="searchCourse()">
+            Search
+        </button>
+    </div>
+
+    <div class="account-links">
+        <a href="index.html">Home</a>
+        <span>|</span>
+        <a href="login.html">Student Login</a>
+        <span>|</span>
+        <a href="signup.html">Signup</a>
+        <span>|</span>
+        <a href="admin-login.html">Admin</a>
+    </div>
+
+</header>
+
+<nav class="category-nav">
+
+    <a href="index.html">🏠 Home</a>
+    <a href="courses.html">📚 Courses</a>
+    <a href="courses.html">💻 Programming</a>
+    <a href="courses.html">🌐 Web Development</a>
+    <a href="courses.html">🤖 AI & ML</a>
+    <a href="courses.html">📊 Data Science</a>
+    <a href="quiz.html">🧠 Quizzes</a>
+    <a href="login.html">🎯 My Learning</a>
+
+</nav>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="hero-tag">
+            🚀 SMART LEARNING PLATFORM FOR STUDENTS
+        </span>
+
+        <h1>
+            Learn Today.<br>
+            <span>Build Your Future.</span>
+        </h1>
+
+        <p>
+            Explore interactive courses, improve your skills,
+            test your knowledge with quizzes, track your progress
+            and earn certificates — all in one learning platform.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="signup.html" class="hero-btn">
+                🚀 Start Learning
+            </a>
+
+            <a href="courses.html" class="hero-btn secondary">
+                📚 Explore Courses
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="stats">
+
+    <div class="stat">
+        <h2>25+</h2>
+        <p>Courses</p>
+    </div>
+
+    <div class="stat">
+        <h2>500+</h2>
+        <p>Students</p>
+    </div>
+
+    <div class="stat">
+        <h2>50+</h2>
+        <p>Quizzes</p>
+    </div>
+
+    <div class="stat">
+        <h2>100+</h2>
+        <p>Certificates</p>
+    </div>
+
+</section>
+
+<section class="section" id="courses">
+
+    <div class="section-heading">
+
+        <span>LEARNING RESOURCES</span>
+
+        <h2>Popular Courses</h2>
+
+        <p>
+            Develop the skills you need for your academic
+            and professional journey.
+        </p>
+
+    </div>
+
+    <div class="course-grid">
+
+        <div class="course-card">
+
+            <div class="course-image python-bg">
+                🐍
+            </div>
+
+            <div class="course-info">
+
+                <span class="category">
+                    PROGRAMMING
+                </span>
+
+                <h3>Python Programming</h3>
+
+                <p>
+                    Learn Python from basic concepts
+                    to advanced programming.
+                </p>
+
+                <div class="course-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.9
+                    </span>
+
+                    <a href="courses.html" class="learn-btn">
+                        Start Learning
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="course-card">
+
+            <div class="course-image web-bg">
+                🌐
+            </div>
+
+            <div class="course-info">
+
+                <span class="category">
+                    DEVELOPMENT
+                </span>
+
+                <h3>Web Development</h3>
+
+                <p>
+                    Learn HTML, CSS and JavaScript
+                    through practical projects.
+                </p>
+
+                <div class="course-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.8
+                    </span>
+
+                    <a href="courses.html" class="learn-btn">
+                        Start Learning
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="course-card">
+
+            <div class="course-image ai-bg">
+                🤖
+            </div>
+
+            <div class="course-info">
+
+                <span class="category">
+                    ARTIFICIAL INTELLIGENCE
+                </span>
+
+                <h3>AI & Machine Learning</h3>
+
+                <p>
+                    Understand artificial intelligence
+                    and machine learning fundamentals.
+                </p>
+
+                <div class="course-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.9
+                    </span>
+
+                    <a href="courses.html" class="learn-btn">
+                        Start Learning
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="course-card">
+
+            <div class="course-image data-bg">
+                📊
+            </div>
+
+            <div class="course-info">
+
+                <span class="category">
+                    DATA SCIENCE
+                </span>
+
+                <h3>Data Science</h3>
+
+                <p>
+                    Learn data analysis, visualization
+                    and data-driven thinking.
+                </p>
+
+                <div class="course-bottom">
+
+                    <span class="rating">
+                        ⭐ 4.7
+                    </span>
+
+                    <a href="courses.html" class="learn-btn">
+                        Start Learning
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="features-section">
+
+    <div class="features-title">
+
+        <h2>Why Choose Durga Learning Hub?</h2>
+
+        <p>
+            Everything a student needs for an effective
+            learning experience.
+        </p>
+
+    </div>
+
+    <div class="features-grid">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📚
+            </div>
+
+            <h3>Quality Courses</h3>
+
+            <p>
+                Access structured courses and
+                learning materials.
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🧠
+            </div>
+
+            <h3>Interactive Quizzes</h3>
+
+            <p>
+                Test your knowledge and improve
+                your understanding.
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📊
+            </div>
+
+            <h3>Track Progress</h3>
+
+            <p>
+                Monitor your course completion
+                and learning progress.
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🏆
+            </div>
+
+            <h3>Earn Certificates</h3>
+
+            <p>
+                Receive certificates after
+                successfully completing courses.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cta">
+
+    <h2>
+        Start Your Learning Journey Today
+    </h2>
+
+    <p>
+        Join Durga Learning Hub and take the next step
+        toward your academic and career goals.
+    </p>
+
+    <a href="signup.html">
+        🎓 Create Student Account
+    </a>
+
+</section>
+
+<footer>
+
+    <div class="footer-logo">
+        🎓 Durga Learning Hub
+    </div>
+
+    <p>
+        A comprehensive learning platform for students.
+    </p>
+
+    <div class="footer-links">
+
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="quiz.html">Quizzes</a>
+        <a href="login.html">Student Login</a>
+        <a href="admin-login.html">Admin Login</a>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 Durga Learning Hub | Learn • Grow • Achieve
+    </p>
+
+</footer>
+
+<script>
+
+function searchCourse() {
+
+    let search =
+        document.getElementById("searchInput").value.trim();
+
+    if (search === "") {
+
+        alert("Please enter a course or topic to search.");
+
+        return;
+    }
+
+    localStorage.setItem(
+        "courseSearch",
+        search
+    );
+
+    window.location.href =
+        "courses.html";
+}
+
+</script>
+
+</body>
+</html>

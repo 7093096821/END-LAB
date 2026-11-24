@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Durga Online Store</title>
+<style>
+* { box-sizing: border-box; }
+body { font-family: Arial; margin: 0; }
+header, footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+nav { background: #34495e; padding: 12px; }
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+}
+main { display: flex; gap: 20px; padding: 20px; }
+section { width: 75%; }
+article {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #f4f4f4;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+article:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px #aaa;
+}
+img {
+    width: 120px;
+    height: 100px;
+    object-fit: contain;
+}
+aside { background: #eee; padding: 15px; }
+button {
+    background: green;
+    color: white;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+}
+button:hover { background: darkgreen; }
+@media(max-width:600px) {
+    main { flex-direction: column; }
+    section, aside { width: 100%; }
+    nav a { margin: 5px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Durga Online Store</h1>
+    <p>Best Shopping Website</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Mobiles</a>
+    <a href="#">Laptops</a>
+    <a href="#">Accessories</a>
+    <a href="#">Contact</a>
+</nav>
+
+<main>
+<section>
+    <article>
+        <img src="smart.pjg.webp" alt="Smartphone">
+        <div>
+            <h3>Smartphone</h3>
+            <p>Price: ₹20,000</p>
+            <button onclick="alert('Added to cart!')">Add to Cart</button>
+        </div>
+    </article>
+
+    <article>
+        <img src="laptop.pjg.avif" alt="Laptop">
+        <div>
+            <h3>Laptop</h3>
+            <p>Price: ₹55,000</p>
+            <button onclick="alert('Added to cart!')">Add to Cart</button>
+        </div>
+    </article>
+
+    <article>
+        <img src="head.pjg.jpg" alt="Headphones">
+        <div>
+            <h3>Headphones</h3>
+            <p>Price: ₹2,000</p>
+            <button onclick="alert('Added to cart!')">Add to Cart</button>
+        </div>
+    </article>
+</section>
+
+<aside>
+    <h3>Offers</h3>
+    <p>10% Off on Mobiles</p>
+    <p>Free Delivery</p>
+    <p>Cash on Delivery</p>
+</aside>
+</main>
+
+<footer>
+    © 2026 Durga Online Store
+</footer>
+
+</body>
+</html>

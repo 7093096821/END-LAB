@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Courses | Learning Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .course-img {
+            height: 180px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+            border-radius: 12px 12px 0 0;
+        }
+
+        .course-img img {
+            width: 110px;
+            height: 110px;
+
+            object-fit: contain;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<header class="top-header">
+
+    <div class="logo-box">
+
+        <div class="logo-icon">
+            🎓
+        </div>
+
+        <div class="logo-text">
+
+            <h2>
+                Learning Hub
+            </h2>
+
+            <span>
+                Student Portal
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="account-links">
+
+        <a href="user-dashboard.html">
+            Dashboard
+        </a>
+
+        |
+
+        <a href="index.html">
+            Logout
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<nav class="category-nav">
+
+    <a href="user-dashboard.html">
+        🏠 Dashboard
+    </a>
+
+    <a class="active" href="courses.html">
+        📚 Courses
+    </a>
+
+    <a href="quiz.html">
+        🧠 Quizzes
+    </a>
+
+    <a href="progress.html">
+        📊 Progress
+    </a>
+
+    <a href="certificates.html">
+        🏆 Certificates
+    </a>
+
+</nav>
+
+
+
+<section class="page-hero">
+
+    <div>
+
+        <h1>
+            📚 Explore Courses
+        </h1>
+
+        <p>
+            Choose a course and start building your skills.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<div class="container">
+
+    <div class="card-grid">
+
+
+        <!-- PYTHON -->
+
+        <div class="card">
+
+            <div class="course-img blue-bg">
+
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                    alt="Python Programming"
+                >
+
+            </div>
+
+            <h3>
+                Python Programming
+            </h3>
+
+            <p>
+                Learn variables, loops, functions,
+                OOP and Python projects.
+            </p>
+
+            <button
+                class="btn"
+                onclick="enroll('Python Programming')"
+            >
+                Enroll Now
+            </button>
+
+        </div>
+
+
+
+        <!-- WEB DEVELOPMENT -->
+
+        <div class="card">
+
+            <div class="course-img yellow-bg">
+
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                    alt="Web Development"
+                >
+
+            </div>
+
+            <h3>
+                Web Development
+            </h3>
+
+            <p>
+                Learn HTML, CSS and JavaScript
+                by building websites.
+            </p>
+
+            <button
+                class="btn"
+                onclick="enroll('Web Development')"
+            >
+                Enroll Now
+            </button>
+
+        </div>
+
+
+
+        <!-- AI & MACHINE LEARNING -->
+
+        <div class="card">
+
+            <div class="course-img purple-bg">
+
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                    alt="AI and Machine Learning"
+                >
+
+            </div>
+
+            <h3>
+                AI & Machine Learning
+            </h3>
+
+            <p>
+                Understand AI, machine learning
+                and intelligent systems.
+            </p>
+
+            <button
+                class="btn"
+                onclick="enroll('AI & Machine Learning')"
+            >
+                Enroll Now
+            </button>
+
+        </div>
+
+
+
+        <!-- DATA SCIENCE -->
+
+        <div class="card">
+
+            <div class="course-img green-bg">
+
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
+                    alt="Data Science"
+                >
+
+            </div>
+
+            <h3>
+                Data Science
+            </h3>
+
+            <p>
+                Learn data analysis, visualization
+                and data-driven concepts.
+            </p>
+
+            <button
+                class="btn"
+                onclick="enroll('Data Science')"
+            >
+                Enroll Now
+            </button>
+
+        </div>
+
+
+
+        <!-- JAVA -->
+
+        <div class="card">
+
+            <div class="course-img purple-bg">
+
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                    alt="Java Programming"
+                >
+
+            </div>
+
+            <h3>
+                Java Programming
+            </h3>
+
+            <p>
+                Learn OOP, classes, inheritance,
+                polymorphism and Java applications.
+            </p>
+
+            <button
+                class="btn"
+                onclick="enroll('Java Programming')"
+            >
+                Enroll Now
+            </button>
+
+        </div>
+
+
+
+        <!-- DATABASE -->
+
+        <div class="card">
+
+            <div class="course-img blue-bg">
+
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                    alt="Database Fundamentals"
+                >
+
+            </div>
+
+            <h3>
+                Database Fundamentals
+            </h3>
+
+            <p>
+                Understand databases, tables,
+                queries and SQL basics.
+            </p>
+
+            <button
+                class="btn"
+                onclick="enroll('Database Fundamentals')"
+            >
+                Enroll Now
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<footer>
+
+    <h2>
+        🎓 Learning Hub
+    </h2>
+
+    <p>
+        Explore. Learn. Achieve.
+    </p>
+
+</footer>
+
+
+
+<script>
+
+function enroll(course) {
+
+    let courses =
+        JSON.parse(
+            localStorage.getItem("enrolledCourses")
+        ) || [];
+
+
+    if (!courses.includes(course)) {
+
+        courses.push(course);
+
+        localStorage.setItem(
+            "enrolledCourses",
+            JSON.stringify(courses)
+        );
+
+        alert(
+            "Successfully enrolled in " + course
+        );
+
+    }
+
+    else {
+
+        alert(
+            "You are already enrolled in " + course
+        );
+
+    }
+
+}
+
+</script>
+
+
+</body>
+</html>
